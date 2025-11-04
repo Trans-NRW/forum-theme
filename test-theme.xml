@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="test" version="1837">
+	<properties>
+		<templateset><![CDATA[2]]></templateset>
+		<editortheme><![CDATA[mybb.css]]></editortheme>
+		<imgdir><![CDATA[images]]></imgdir>
+		<logo><![CDATA[https://trans.nrw/images/draft1.png]]></logo>
+		<tablespace><![CDATA[5]]></tablespace>
+		<borderwidth><![CDATA[0]]></borderwidth>
+		<color><![CDATA[]]></color>
+		<disporder><![CDATA[a:11:{s:9:"reset.css";i:0;s:10:"global.css";i:1;s:10:"usercp.css";i:2;s:9:"modcp.css";i:3;s:16:"star_ratings.css";i:4;s:14:"showthread.css";i:5;s:17:"thread_status.css";i:6;s:8:"css3.css";i:7;s:13:"global_md.css";i:9;s:13:"global_sm.css";i:10;s:13:"global_lg.css";i:11;}]]></disporder>
+	</properties>
+	<stylesheets>
+		<stylesheet name="global.css" version="1837"><![CDATA[@layer theme{
+	:root, :host {
+		--font-sans: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+		--font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+		--color-sky-200: oklch(90.1% .058 230.902);
+		--color-zinc-400: oklch(70.5% .015 286.067);
+		--color-zinc-500: oklch(55.2% .016 285.938);
+		--color-zinc-800: oklch(27.4% .006 286.033);
+		--spacing: .25rem;
+		
+		--text-xxs: .55rem;
+		--text-xxs--line-height: calc(1/.55);
+		--text-xs: .75rem;
+		--text-xs--line-height: calc(1/.75);
+		--text-lg: 1.125rem;
+		--text-lg--line-height: calc(1.75/1.125);
+		--text-xl: 1.25rem;
+		--text-xl--line-height: calc(1.75/1.25);
+		--text-3xl: 1.875rem;
+		--text-3xl--line-height: calc(2.25/1.875);
+		--font-weight-bold: 700;
+		--default-font-family: var(--font-sans);
+		--default-mono-font-family: var(--font-mono);
+		--trans-blue: #5bcefa;
+		--trans-pink: #f5a9b8;
+		--white: #fff;
+		--trans-flag: linear-gradient(90deg,var(--trans-blue)0%,var(--trans-blue)20%,var(--trans-pink)20%,var(--trans-pink)40%,var(--white)40%,var(--white)60%,var(--trans-pink)60%,var(--trans-pink)80%,var(--trans-blue)80%,var(--trans-blue)100%);
+		--trans-gradient: linear-gradient(to right,var(--trans-blue),var(--trans-pink));
+		
+		--transition-time: .2s;
+	}
+}
+
+@layer utilities {
+	html {
+		tab-size: 4;
+		line-height: 1.5;
+		font-family: var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");
+		font-feature-settings: var(--default-font-feature-settings,normal);
+		font-variation-settings: var(--default-font-variation-settings,normal);
+		
+	body {
+		margin: calc(var(--spacing)*5);
+		background-color: var(--color-zinc-800);
+		background-attachment: fixed;
+		font-family: var(--font-mono);
+		color: var(--color-sky-200);
+	}
+		
+	* {	
+		color: inherit;
+	}
+	
+	
+		button {
+			border: none;
+		}	
+		
+	a {
+		text-decoration: dotted;
+		text-decoration-line: underline;
+	}
+
+	a:focus, a:hover {
+		color: transparent;
+		background-image: var(--trans-flag);
+		background-clip: text;
+		transition: color .2s;
+		border: 2px solid;
+		border-color: unset;
+		border-image: var(--trans-flag) 1 1;
+		border-width: 0 0 2px;
+		text-decoration: none;
+	}
+		
+	nav {
+		
+		button {
+			border: none;
+		}
+		
+		#show-nav:checked ~ div {
+        	height: 19ex;
+		}
+		
+	
+		
+	ul {
+			padding: 0;
+			margin-top: 0;
+	}
+	ul.top_links {
+			float: left;
+			margin-right: calc(var(--spacing)*5);
+	}
+	ul.panel_links{
+			float: right; 
+			margin-left: calc(var(--spacing)*5);
+			margin-top: 0;
+	}
+}
+		
+.trans_border {
+
+		--tw-border-style: solid;
+    	border-style: solid;
+		border-style: var(--tw-border-style);
+		border-width: 2px;    
+		border-inline-style: var(--tw-border-style);
+    	border-inline-width: 0;
+		min-height: fit-content;
+		height: fit-content;
+		border-image: var(--trans-gradient) 1 1;
+		background: inherit;    
+		padding-block: calc(var(--spacing)*2);
+		}
+		
+#logo {
+		width: 256px;
+		height: 256px;
+		margin: auto;
+		}
+	#quicksearch {
+		display: none;
+		}
+		
+	.navigation {
+		      padding-block: calc(var(--spacing)*2);
+		}
+		
+	
+		.toggle:checked + button::before {
+			transform: rotate(90deg);
+			display: inline-block;
+			transition: transform var(--transition-time);
+		}
+		.toggle + button::before {
+			content: ">";
+			display: inline-block;
+			transition: transform var(--transition-time);
+			margin-right: var(--spacing);
+		}
+		.toggle + button {
+			cursor: pointer;
+			label {
+				cursor: pointer;
+			}
+		}
+		
+		.toggle:checked ~ .toggleable {
+			visibility: visible;
+        	transition: visibility var(--transition-time), opacity var(--transition-time), height var(--transition-time);
+			height: auto;
+        	opacity: 1;
+		}
+		.toggle ~ .toggleable{        
+			visibility: hidden;
+        	height: 0;
+        	opacity: 0;
+        	transition: visibility var(--transition-time), opacity var(--transition-time), height var(--transition-time);
+        	overflow: hidden;
+		}
+		
+		.modlist, .smallinfo {
+			font-size: var(--text-xxs);
+			line-height: var(--text-xxs--line-height);
+		}
+		.smalltext {
+			font-size: var(--text-xs);
+			line-height: var(--text-xs--line-height);
+		}
+		
+		.postdate{
+			display: inline-block;
+		}
+		
+		.forum {
+			.row {
+				--tw-border-style: solid;
+    			border-style: solid;
+				border-style: var(--tw-border-style);
+				border-width: 1px;    
+				border-inline-style: var(--tw-border-style);
+    			border-inline-width: 0;
+				min-height: fit-content;
+				height: fit-content;
+				border-image: var(--trans-gradient) 1 1;
+				background: inherit;    
+				padding-block: calc(var(--spacing)*2);
+				padding-left: calc(var(--spacing)*2);
+			}
+			.row:first-child {
+				border-width: 1px 0 0 0;    
+			}
+			.row:first-child:last-child {
+				border-width: 1px 0 1px 0;    
+			}
+			
+			
+		}
+
+		footer {
+			font-color: var(--color-zinc-400);
+		}
+		
+}
+}]]>
+		</stylesheet>
+		<stylesheet name="css3.css" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="global_md.css" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="global_lg.css" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="global_sm.css" version="1837"><![CDATA[@layer utilities {
+	@media (min-width: 48rem){
+		
+	}
+}]]>
+		</stylesheet>
+		<stylesheet name="reset.css" version="1837"><![CDATA[/*! tailwindcss v4.1.14 | MIT License | https://tailwindcss.com */
+@layer properties {
+  @supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))) {
+    *,
+    :before,
+    :after,
+    ::backdrop {
+      --tw-border-style:solid;
+      --tw-font-weight:initial
+    }
+  }
+}
+@layer theme {
+  :root,
+  :host {
+    /*! --font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; *//*! --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; *//*! --color-sky-200:oklch(90.1% .058 230.902); *//*! --color-zinc-400:oklch(70.5% .015 286.067); *//*! --color-zinc-500:oklch(55.2% .016 285.938); *//*! --color-zinc-800:oklch(27.4% .006 286.033); *//*! --spacing:.25rem; *//*! --text-xs:.75rem; *//*! --text-xs--line-height:calc(1/.75); *//*! --text-lg:1.125rem; *//*! --text-lg--line-height:calc(1.75/1.125); *//*! --text-xl:1.25rem; *//*! --text-xl--line-height:calc(1.75/1.25); *//*! --text-3xl:1.875rem; *//*! --text-3xl--line-height:calc(2.25/1.875); *//*! --font-weight-bold:700; *//*! --default-font-family:var(--font-sans); *//*! --default-mono-font-family:var(--font-mono); *//*! --trans-blue:#5bcefa; *//*! --trans-pink:#f5a9b8; *//*! --white:#fff; *//*! --trans-flag:linear-gradient(90deg,var(--trans-blue)0%,var(--trans-blue)20%,var(--trans-pink)20%,var(--trans-pink)40%,var(--white)40%,var(--white)60%,var(--trans-pink)60%,var(--trans-pink)80%,var(--trans-blue)80%,var(--trans-blue)100%); *//*! --trans-gradient:linear-gradient(to right,var(--trans-blue),var(--trans-pink)) */
+  }
+}
+@layer base {
+  *,
+  :after,
+  :before,
+  ::backdrop {
+    /*! box-sizing:border-box; *//*! border:0 solid; *//*! margin:0; *//*! padding:0 */
+  }
+  ::file-selector-button {
+    box-sizing:border-box;
+    border:0 solid;
+    margin:0;
+    padding:0
+  }
+  html,
+  :host {
+    /*! -webkit-text-size-adjust:100%; *//*! tab-size:4; *//*! line-height:1.5; *//*! font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"); *//*! font-feature-settings:var(--default-font-feature-settings,normal); *//*! font-variation-settings:var(--default-font-variation-settings,normal); */-webkit-tap-highlight-color:transparent
+  }
+  hr {
+    height:0;
+    color:inherit;
+    border-top-width:1px
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration:underline dotted;
+    text-decoration:underline dotted
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size:inherit;
+    font-weight:inherit
+  }
+  a {
+    /*! color:inherit; *//*! -webkit-text-decoration:inherit; *//*! -webkit-text-decoration:inherit; *//*! -webkit-text-decoration:inherit; *//*! text-decoration:inherit */
+  }
+  b,
+  strong {
+    font-weight:bolder
+  }
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);
+    font-feature-settings:var(--default-mono-font-feature-settings,normal);
+    font-variation-settings:var(--default-mono-font-variation-settings,normal);
+    font-size:1em
+  }
+  small {
+    font-size:80%
+  }
+  sub,
+  sup {
+    vertical-align:baseline;
+    font-size:75%;
+    line-height:0;
+    position:relative
+  }
+  sub {
+    bottom:-.25em
+  }
+  sup {
+    top:-.5em
+  }
+  table {
+    text-indent:0;
+    border-color:inherit;
+    border-collapse:collapse
+  }
+  :-moz-focusring {
+    outline:auto
+  }
+  progress {
+    vertical-align:baseline
+  }
+  summary {
+    display:list-item
+  }
+  ol,
+  ul,
+  menu {
+    list-style:none
+  }
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    vertical-align:middle;
+    display:block
+  }
+  img,
+  video {
+    max-width:100%;
+    height:auto
+  }
+  button,
+  input,
+  select,
+  optgroup,
+  textarea {
+    font:inherit;
+    font-feature-settings:inherit;
+    font-variation-settings:inherit;
+    letter-spacing:inherit;
+    color:inherit;
+    opacity:1;
+    background-color:#0000;
+    border-radius:0
+  }
+  ::file-selector-button {
+    font:inherit;
+    font-feature-settings:inherit;
+    font-variation-settings:inherit;
+    letter-spacing:inherit;
+    color:inherit;
+    opacity:1;
+    background-color:#0000;
+    border-radius:0
+  }
+  :where(select:is([multiple],
+  [size])) optgroup {
+    font-weight:bolder
+  }
+  :where(select:is([multiple],
+  [size])) optgroup option {
+    padding-inline-start:20px
+  }
+  ::file-selector-button {
+    margin-inline-end:4px
+  }
+  ::placeholder {
+    opacity:1
+  }
+  @supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px) {
+    ::placeholder {
+      color:currentColor
+    }
+    @supports (color:color-mix(in lab, red, red)) {
+      ::placeholder {
+        color:color-mix(in oklab,currentcolor 50%,transparent)
+      }
+    }
+  }
+  textarea {
+    resize:vertical
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance:none
+  }
+  ::-webkit-date-and-time-value {
+    min-height:1lh;
+    text-align:inherit
+  }
+  ::-webkit-datetime-edit {
+    display:inline-flex
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding:0
+  }
+  ::-webkit-datetime-edit {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-year-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-month-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-day-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-hour-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-minute-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-second-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-millisecond-field {
+    padding-block:0
+  }
+  ::-webkit-datetime-edit-meridiem-field {
+    padding-block:0
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height:1
+  }
+  :-moz-ui-invalid {
+    box-shadow:none
+  }
+  button,
+  input:where([type=button],
+  [type=reset],
+  [type=submit]) {
+    appearance:button
+  }
+  ::file-selector-button {
+    appearance:button
+  }
+  ::-webkit-inner-spin-button {
+    height:auto
+  }
+  ::-webkit-outer-spin-button {
+    height:auto
+  }
+  [hidden]:where(:not([hidden=until-found])) {
+    display:none!important
+  }
+}
+@layer components;
+@property --tw-border-style {
+  syntax:"*";
+  inherits:false;
+  initial-value:solid
+}
+@property --tw-font-weight {
+  syntax:"*";
+  inherits:false
+}
+]]>
+		</stylesheet>
+		<stylesheet name="showthread.css" attachedto="showthread.php" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="star_ratings.css" attachedto="forumdisplay.php|showthread.php" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="thread_status.css" attachedto="forumdisplay.php|usercp.php|search.php" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="modcp.css" attachedto="modcp.php" version="1837"><![CDATA[]]>
+		</stylesheet>
+		<stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1837"><![CDATA[]]>
+		</stylesheet>
+	</stylesheets>
+	<templates>
+		<template name="headerinclude" version="1837"><![CDATA[<link rel="alternate" type="application/rss+xml" title="{$lang->latest_threads} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php" />
+<link rel="alternate" type="application/atom+xml" title="{$lang->latest_threads} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?type=atom1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.js?ver=1823"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.plugins.min.js?ver=1821"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/general.js?ver=1827"></script>
+
+{$stylesheets}
+<script type="text/javascript">
+<!--
+	lang.unknown_error = "{$lang->unknown_error}";
+	lang.confirm_title = "{$lang->confirm_title}";
+	lang.expcol_collapse = "{$lang->expcol_collapse}";
+	lang.expcol_expand = "{$lang->expcol_expand}";
+	lang.select2_match = "{$lang->select2_match}";
+	lang.select2_matches = "{$lang->select2_matches}";
+	lang.select2_nomatches = "{$lang->select2_nomatches}";
+	lang.select2_inputtooshort_single = "{$lang->select2_inputtooshort_single}";
+	lang.select2_inputtooshort_plural = "{$lang->select2_inputtooshort_plural}";
+	lang.select2_inputtoolong_single = "{$lang->select2_inputtoolong_single}";
+	lang.select2_inputtoolong_plural = "{$lang->select2_inputtoolong_plural}";
+	lang.select2_selectiontoobig_single = "{$lang->select2_selectiontoobig_single}";
+	lang.select2_selectiontoobig_plural = "{$lang->select2_selectiontoobig_plural}";
+	lang.select2_loadmore = "{$lang->select2_loadmore}";
+	lang.select2_searching = "{$lang->select2_searching}";
+
+	var templates = {
+		modal: '{$jsTemplates['modal']}',
+		modal_button: '{$jsTemplates['modal_button']}'
+	};
+
+	var cookieDomain = "{$mybb->settings['cookiedomain']}";
+	var cookiePath = "{$mybb->settings['cookiepath']}";
+	var cookiePrefix = "{$mybb->settings['cookieprefix']}";
+	var cookieSecureFlag = "{$mybb->settings['cookiesecureflag']}";
+	var deleteevent_confirm = "{$lang->deleteevent_confirm}";
+	var removeattach_confirm = "{$lang->removeattach_confirm}";
+	var loading_text = '{$lang->ajax_loading}';
+	var saving_changes = '{$lang->saving_changes}';
+	var use_xmlhttprequest = "{$mybb->settings['use_xmlhttprequest']}";
+	var my_post_key = "{$mybb->post_code}";
+	var rootpath = "{$mybb->settings['bburl']}";
+	var imagepath = "{$theme['imgdir']}";
+  	var yes_confirm = "{$lang->yes}";
+	var no_confirm = "{$lang->no}";
+	var MyBBEditor = null;
+	var spinner_image = "{$theme['imgdir']}/spinner.gif";
+	var spinner = "<img src='" + spinner_image +"' alt='' />";
+	var modal_zindex = 9999;
+// -->
+</script>]]></template>
+		<template name="nav" version="1837"><![CDATA[<div class="navigation">
+{$nav}{$activesep}{$activebit}
+</div>]]></template>
+		<template name="footer" version="1837"><![CDATA[<debugstuff>
+	</div>
+</main>
+<footer id="footer">
+	<div class="upper">
+		<div class="wrapper">
+			{$lang_select}
+			{$theme_select}
+			<ul class="menu bottom_links">
+				{$showteamlink}
+				{$contact_us}
+				<li><a href="{$mybb->settings['homeurl']}">{$mybb->settings['homename']}</a></li>
+				<li><a href="#top">{$lang->bottomlinks_returntop}</a></li>
+				<li><a href="<archive_url>">{$lang->bottomlinks_litemode}</a></li>
+				<li><a href="{$mybb->settings['bburl']}/misc.php?action=markread{$post_code_string}">{$lang->bottomlinks_markread}</a></li>
+				<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication">{$lang->bottomlinks_syndication}</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="lower">
+		<div class="wrapper">
+			<span id="current_time">{$lang->welcome_current_time}</span>
+			<span id="copyright">
+				<!-- MyBB is free software developed and maintained by a volunteer community.
+					It would be much appreciated by the MyBB Group if you left the full copyright and "powered by" notice intact,
+					to show your support for MyBB.  If you choose to remove or modify the copyright below,
+					you may be refused support on the MyBB Community Forums.
+
+					This is free software, support us and we'll support you. -->
+				{$lang->powered_by} <a href="https://mybb.com" target="_blank" rel="noopener">MyBB{$mybbversion}</a>, &copy; 2002-{$copy_year} <a href="https://mybb.com" target="_blank" rel="noopener">MyBB Group</a>.
+				<!-- End powered by -->
+			</span>
+		</div>
+	</div>
+</footer>
+<!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->{$task_image}<!-- End task image code -->
+{$auto_dst_detection}
+</div>]]></template>
+		<template name="header_welcomeblock_guest" version="1837"><![CDATA[
+	<div>
+						<a href="{$mybb->settings['bburl']}/member.php?action=login" onclick="$('#quick_login').modal({ fadeDuration: 250, keepelement: true, zIndex: (typeof modal_zindex !== 'undefined' ? modal_zindex : 9999) }); return false;" class="login">{$lang->welcome_login}</a> <a href="{$mybb->settings['bburl']}/member.php?action=register" class="register">{$lang->welcome_register}</a>
+</div>
+				<div class="modal" id="quick_login" style="display: none;">
+					<form method="post" action="{$mybb->settings['bburl']}/member.php">
+						<input name="action" type="hidden" value="do_login" />
+						<input name="url" type="hidden" value="" />
+						<input name="quick_login" type="hidden" value="1" />
+						<input name="my_post_key" type="hidden" value="{$mybb->post_code}" />
+						<table width="100%" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" border="0" class="tborder">
+							<tr>
+								<td class="thead" colspan="2"><strong>{$lang->login}</strong></td>
+							</tr>
+							{$loginform}
+						</table>
+					</form>
+				</div>
+				<script type="text/javascript">
+					$("#quick_login input[name='url']").val($(location).attr('href'));
+				</script>]]></template>
+		<template name="header_welcomeblock_member" version="1837"><![CDATA[<div class="lower">
+	<div class="wrapper">
+		<ul class="menu panel_links">
+			{$usercplink}
+			{$modcplink}
+			{$admincplink}
+			<li><a href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}" class="logout">{$lang->welcome_logout}</a></li>
+		</ul>
+		<ul class="menu user_links">
+			{$buddylink}
+			{$searchlink}
+			{$pmslink}
+			
+		</ul>
+	</div>
+	<br class="clear" />
+</div>]]></template>
+		<template name="forumdisplay_subforums" version="1837"><![CDATA[<div class="forum">
+	{$lang->sub_forums_in}
+
+{$forums}
+</div>]]></template>
+		<template name="forumdisplay_thread_rating" version="1837"><![CDATA[<div id="rating_table_{$thread['tid']}">
+		<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
+			<li class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
+		</ul>
+		<script type="text/javascript">
+		<!--
+			Rating.build_forumdisplay({$thread['tid']}, { width: '{$thread['width']}', extra_class: '{$not_rated}', current_average: '{$ratingvotesav}' });
+		// -->
+		</script>
+	</div>]]></template>
+		<template name="index" version="1837"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']}</title>
+{$headerinclude}
+<script type="text/javascript">
+<!--
+	lang.no_new_posts = "{$lang->no_new_posts}";
+	lang.click_mark_read = "{$lang->click_mark_read}";
+// -->
+</script>
+</head>
+<body>
+{$header}
+{$forums}
+{$boardstats}
+
+<dl class="forum_legend smalltext">
+	<dt><span class="forum_status forum_on" title="{$lang->new_posts}"></span></dt>
+	<dd>{$lang->new_posts}</dd>
+
+	<dt><span class="forum_status forum_off" title="{$lang->no_new_posts}"></span></dt>
+	<dd>{$lang->no_new_posts}</dd>
+
+	<dt><span class="forum_status forum_offclose" title="{$lang->forum_closed}"></span></dt>
+	<dd>{$lang->forum_closed}</dd>
+
+	<dt><span class="forum_status forum_offlink" title="{$lang->forum_redirect}"></span></dt>
+	<dd>{$lang->forum_redirect}</dd>
+</dl>
+<br class="clear" />
+{$footer}
+</body>
+</html>]]></template>
+		<template name="nav_sep_active" version="1837"><![CDATA[<!-- img src="{$theme['imgdir']}/nav_bit.png" alt="" / -->]]></template>
+		<template name="forumbit_depth1_cat_subforum" version="1837"><![CDATA[<tr>
+<td class="tcat" colspan="6"><strong>&raquo;&nbsp;&nbsp;<a href="{$forum_url}">{$forum['name']}</a></strong><br /><span class="smalltext">{$forum['description']}</span></td></tr>{$sub_forums}]]></template>
+		<template name="forumbit_depth1_cat" version="1837"><![CDATA[<div class="forum depth1">
+	
+    <!--input id="cat_{$forum['fid']}_e" class="toggle" name="cat_{$forum['fid']}_e" type="checkbox" style="display:none" checked/>
+	<button><label for="cat_{$forum['fid']}_e">&gt;</label></button-->
+	<span><strong><a href="{$forum_url}">{$forum['name']}</a></strong></span><br /><div class="smalltext">{$forum['description']}</div>
+
+	<div class="toggleable">
+		
+{$sub_forums} 
+		</div>
+		
+</div>
+	<br/>]]></template>
+		<template name="forumbit_depth2_cat" version="1837"><![CDATA[<tr>
+<td class="{$bgcolor}" align="center" width="1"><span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span></td>
+<td class="{$bgcolor}">
+<strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$subforums}</div>
+</td>
+<td class="{$bgcolor}" align="center" style="white-space: nowrap">{$threads}{$unapproved['unapproved_threads']}</td>
+<td class="{$bgcolor}" align="center" style="white-space: nowrap">{$posts}{$unapproved['unapproved_posts']}</td>
+<td class="{$bgcolor}" align="right" style="white-space: nowrap">{$lastpost}</td>
+</tr>]]></template>
+		<template name="forumbit_depth2_forum_lastpost_never" version="1837"><![CDATA[<span>{$lang->lastpost_never}</span>]]></template>
+		<template name="forumbit_moderators" version="1837"><![CDATA[{$lang->forumbit_moderated_by} {$moderators}]]></template>
+		<template name="index_boardstats" version="1837"><![CDATA[<div class="trans_border">
+				
+	<input id="show-boardstats" class="toggle" name="show-boardstats" type="checkbox" style="display:none" value="false"/>
+	<button><label for="show-boardstats">{$lang->boardstats}</label></button>
+				
+	<div class="toggleable">
+					
+		{$whosonline}
+		{$birthdays}
+		{$forumstats}
+		<div id="statistic_links" class="smalltext">
+			{$logoutlink}
+			{$statspage}
+		</div>
+	</div>
+	
+</div>]]></template>
+		<template name="index_whosonline" version="1837"><![CDATA[<div class="smalltext"><strong>{$lang->whos_online}</strong> [<a href="online.php">{$lang->complete_list}</a>]</div></td>
+<div class="smalltext">{$lang->online_note}<br />{$onlinemembers}</div>]]></template>
+		<template name="index_birthdays" version="1837"><![CDATA[<div><strong>{$lang->todays_birthdays}</strong></div>
+<div class="smalltext">{$bdays}</div>]]></template>
+		<template name="forumbit_depth2_forum_lastpost" version="1837"><![CDATA[<span class="">
+<a href="{$lastpost_link}" title="{$full_lastpost_subject}"><strong>{$lastpost_subject}</strong></a>
+	{$lang->by} {$lastpost_profilelink} <span class="postdate">{$lastpost_date}</span></span>]]></template>
+		<template name="forumbit_depth1_forum_lastpost" version="1837"><![CDATA[<span class="smalltext">
+<a href="{$lastpost_link}" title="{$full_lastpost_subject}"><strong>{$lastpost_subject}</strong></a>
+{$lang->by} {$lastpost_profilelink}{$lastpost_date}</span>]]></template>
+		<template name="index_stats" version="1837"><![CDATA[<div id="boardstats" class="smalltext"><strong>{$lang->boardstats}</strong></div>
+<div class="smalltext">
+	<p>
+{$lang->stats_posts_threads}
+	</p>
+	<p>
+{$lang->stats_numusers}
+	</p>
+	<p>
+{$lang->stats_newestuser}
+	</p>
+	<p>
+{$lang->stats_mostonline}
+	</p>
+</div>]]></template>
+		<template name="nav_bit_active" version="1837"><![CDATA[<span class="navbit active">{$navbit['name']}</span>]]></template>
+		<template name="forumbit_depth2_forum" version="1837"><![CDATA[<div class="row">
+
+<div>
+	<a href="{$forum_url}">{$forum['name']}</a> <span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span>
+	{$forum_viewers_text}
+	<div class="smalltext">
+		<span class="forum_description">{$forum['description']}</span>
+		<div class="modlist">{$modlist}</div>
+		<div class="smallinfo">
+			{$lang->forumbit_threads}: {$threads}{$unapproved['unapproved_threads']}
+			{$lang->forumbit_posts}: {$posts}{$unapproved['unapproved_posts']}
+			{$lang->forumbit_lastpost}: {$lastpost}
+		</div>
+		{$subforums}
+	</div>
+</div>
+</div>]]></template>
+		<template name="showthread_ratethread" version="1837"><![CDATA[<div style="margin-top: 6px; padding-right: 10px;" class="float_right">
+		<script type="text/javascript">
+		<!--
+			lang.ratings_update_error = "{$lang->ratings_update_error}";
+		// -->
+		</script>
+		<script type="text/javascript" src="{$mybb->asset_url}/jscripts/rating.js?ver=1821"></script>
+		<div class="inline_rating">
+			<strong class="float_left" style="padding-right: 10px;">{$lang->thread_rating}</strong>
+			<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
+				<li style="width: {$thread['width']}%" class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
+				<li><a class="one_star" title="{$lang->one_star}" href="./ratethread.php?tid={$thread['tid']}&amp;rating=1&amp;my_post_key={$mybb->post_code}">1</a></li>
+				<li><a class="two_stars" title="{$lang->two_stars}" href="./ratethread.php?tid={$thread['tid']}&amp;rating=2&amp;my_post_key={$mybb->post_code}">2</a></li>
+				<li><a class="three_stars" title="{$lang->three_stars}" href="./ratethread.php?tid={$thread['tid']}&amp;rating=3&amp;my_post_key={$mybb->post_code}">3</a></li>
+				<li><a class="four_stars" title="{$lang->four_stars}" href="./ratethread.php?tid={$thread['tid']}&amp;rating=4&amp;my_post_key={$mybb->post_code}">4</a></li>
+				<li><a class="five_stars" title="{$lang->five_stars}" href="./ratethread.php?tid={$thread['tid']}&amp;rating=5&amp;my_post_key={$mybb->post_code}">5</a></li>
+			</ul>
+		</div>
+</div>]]></template>
+		<template name="postbit_author_user" version="1837"><![CDATA[	{$lang->postbit_posts} {$post['postnum']}<br />
+	{$lang->postbit_threads} {$post['threadnum']}<br />
+	{$lang->postbit_joined} {$post['userregdate']}
+	{$post['replink']}{$post['warninglevel']}]]></template>
+		<template name="postbit_profilefield" version="1837"><![CDATA[{$post['fieldname']}: {$post['fieldvalue']}]]></template>
+		<template name="showthread_search" version="1837"><![CDATA[	<div class="search_thread">
+		<form action="search.php" method="post">
+			<input type="hidden" name="action" value="thread" />
+			<input type="hidden" name="tid" value="{$thread['tid']}" />
+			<input type="text" name="keywords" value="{$lang->enter_keywords}" onfocus="if(this.value == '{$lang->enter_keywords}') { this.value = ''; }" onblur="if(this.value=='') { this.value='{$lang->enter_keywords}'; }" class="textbox" size="25" />
+			<input type="submit" class="button" value="{$lang->search_thread}" />
+		</form>
+	</div>]]></template>
+		<template name="showthread" version="1837"><![CDATA[<html>
+<head>
+<title>{$thread['subject']}</title>
+{$headerinclude}
+<script type="text/javascript">
+<!--
+	var quickdelete_confirm = "{$lang->quickdelete_confirm}";
+	var quickrestore_confirm = "{$lang->quickrestore_confirm}";
+	var allowEditReason = "{$mybb->settings['alloweditreason']}";
+	lang.save_changes = "{$lang->save_changes}";
+	lang.cancel_edit = "{$lang->cancel_edit}";
+	lang.quick_edit_update_error = "{$lang->quick_edit_update_error}";
+	lang.quick_reply_post_error = "{$lang->quick_reply_post_error}";
+	lang.quick_delete_error = "{$lang->quick_delete_error}";
+	lang.quick_delete_success = "{$lang->quick_delete_success}";
+	lang.quick_delete_thread_success = "{$lang->quick_delete_thread_success}";
+	lang.quick_restore_error = "{$lang->quick_restore_error}";
+	lang.quick_restore_success = "{$lang->quick_restore_success}";
+	lang.editreason = "{$lang->postbit_editreason}";
+	lang.post_deleted_error = "{$lang->post_deleted_error}";
+	lang.softdelete_thread = "{$lang->soft_delete_thread}";
+	lang.restore_thread = "{$lang->restore_thread}";
+// -->
+</script>
+<!-- jeditable (jquery) -->
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/report.js?ver=1820"></script>
+<script src="{$mybb->asset_url}/jscripts/jeditable/jeditable.min.js"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/thread.js?ver=1827"></script>
+</head>
+<body>
+	{$header}
+	{$threadnotesbox}
+	{$pollbox}
+	<div class="float_left">
+		{$multipage}
+	</div>
+	<div class="float_right">
+		{$newreply}
+	</div>
+	{$ratethread}
+	<div class="clear">
+				<div class="float_right">
+					<span class="smalltext"><strong><a href="showthread.php?mode={$thread_toggle}&amp;tid={$tid}&amp;pid={$pid}#pid{$pid}">{$lang->thread_toggle}</a>{$threadnoteslink}</strong></span>
+				</div>
+				<div>
+					<strong>{$thread['displayprefix']}{$thread['subject']}</strong>
+				</div>
+		<div class="clear"></span>
+		</div>
+	<div id="posts">
+		{$posts}
+	</div>
+			<div class="tfoot">
+				{$search_thread}
+			</div>
+				<div class="newest_oldest">
+					<strong><span>&laquo; <a href="{$next_oldest_link}">{$lang->next_oldest}</a></span> <span>|</span> <span> <a href="{$next_newest_link}">{$lang->next_newest}</a> &raquo;</span></strong>
+				</div>
+	<div class="float_left">
+		{$multipage}
+	</div>
+	<div style="padding-top: 4px;" class="float_right">
+		{$newreply}
+	</div>
+	<br class="clear" />
+	{$quickreply}
+	{$threadexbox}
+	{$similarthreads}
+	<div class="thread_tools">
+			{$printthread}
+			{$sendthread}
+			{$addremovesubscription}
+			{$addpoll}
+	</div>
+
+	<div class="float_right">
+		{$moderationoptions}
+		{$forumjump}
+	</div>
+	<br class="clear" />
+	{$usersbrowsing}
+	{$footer}
+	<script type="text/javascript">
+		var thread_deleted = "{$thread_deleted}";
+		if(thread_deleted == "1")
+		{
+			$("#quick_reply_form, .new_reply_button, .thread_tools, .inline_rating").hide();
+			$("#moderator_options_selector option.option_mirage").attr("disabled","disabled");
+		}
+	</script>
+</body>
+</html>]]></template>
+		<template name="showthread_quickreply_options_signature" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="postoptions[signature]" value="1" {$postoptionschecked['signature']} />&nbsp;<strong>{$lang->signature}</strong></label>]]></template>
+		<template name="showthread_quickreply_options_stick" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="modoptions[stickthread]" value="1"{$stickch} />&nbsp;<strong>{$lang->stick_thread}</strong></label>]]></template>
+		<template name="showthread_quickreply_options_close" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="modoptions[closethread]" value="1"{$closelinkch} />&nbsp;<strong>{$lang->close_thread}</strong></label>]]></template>
+		<template name="postbit_online" version="1837"><![CDATA[<span class="buddy_status online" title="{$lang->postbit_status_online}" >🟢</span>]]></template>
+		<template name="showthread_quickreply" version="1837"><![CDATA[<div id="quickreply_spinner" class="showthread_spinner" style="display: none"><img src="{$theme['imgdir']}/spinner.gif" /></div>
+<br />
+{$moderation_notice}
+
+
+	
+<div class="trans_border">
+	<input id="show-quickreply" class="toggle" name="show-quickreply" type="checkbox" style="display:none" value="false"/>
+	<button><label for="show-quickreply">{$lang->quick_reply}</label></button>
+				
+	<div class="toggleable">
+		<form method="post" action="newreply.php?tid={$tid}&amp;processed=1" name="quick_reply_form" id="quick_reply_form">
+			<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+			<input type="hidden" name="subject" value="RE: {$reply_subject}" />
+			<input type="hidden" name="action" value="do_newreply" />
+			<input type="hidden" name="posthash" value="{$posthash}" id="posthash" />
+			<input type="hidden" name="quoted_ids" value="" id="quoted_ids" />
+			<input type="hidden" name="lastpid" id="lastpid" value="{$last_pid}" />
+			<input type="hidden" name="from_page" value="{$page}" />
+			<input type="hidden" name="tid" value="{$tid}" />
+			<input type="hidden" name="method" value="quickreply" />
+			<div>
+					<strong>{$lang->message}</strong><br />
+					<div class="smalltext">{$lang->message_note}<br />
+						<div class="quickreply_options">
+							{$option_signature}
+							<label><input type="checkbox" class="checkbox" name="postoptions[disablesmilies]" value="1" />&nbsp;<strong>{$lang->disable_smilies}</strong></label>{$closeoption}
+						</div>
+				</div>
+			</div>
+			<div>
+				<div style="">
+						<textarea style="" rows="8" cols="80" name="message" id="message" tabindex="1"></textarea>
+					</div>
+				<div class="editor_control_bar" style="width: 95%; padding: 4px; margin-top: 3px; display: none;" id="quickreply_multiquote">
+						<span class="smalltext">
+							{$lang->quickreply_multiquote_selected} <a href="./newreply.php?tid={$tid}&amp;load_all_quotes=1" onclick="return Thread.loadMultiQuoted();">{$lang->quickreply_multiquote_now}</a> {$lang->or} <a href="javascript:void(0)" onclick="Thread.clearMultiQuoted(); return false;">{$lang->quickreply_multiquote_deselect}</a>.
+						</span>
+					</div>
+			</div>
+			{$captcha}
+			<div>
+				<input type="submit" class="button" value="{$lang->post_reply}" tabindex="2" accesskey="s" id="quick_reply_submit" /> <input type="submit" class="button" name="previewpost" value="{$lang->preview_post}" tabindex="3" />
+			</div>
+		</form>
+	</div>
+		
+</div>]]></template>
+		<template name="postbit_userstar" version="1837"><![CDATA[<span class="star">⭐</span>]]></template>
+		<template name="header" version="1837"><![CDATA[<div id="container">
+		<a name="top" id="top"></a>
+	
+		<header id="header">
+			<div id="logo">
+				<div class="wrapper">
+					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
+				</div>
+			</div>
+		</header>
+	
+			<nav id="panel" class="trans_border">
+				
+				<input id="show-nav" class="toggle" name="show-nav" type="checkbox" style="display:none" value="false"/>
+				<button><label for="show-nav">Navigation</label></button>
+				
+				<div class="toggleable">
+				<ul class="menu top_links">
+						{$menu_portal}
+						{$menu_search}
+						{$menu_memberlist}
+						{$menu_calendar}
+						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help">{$lang->toplinks_help}</a></li>
+					</ul>
+						{$welcomeblock}
+						
+						<div id="quicksearch">
+						{$quicksearch}
+						</div>
+				</div>
+			</nav>
+		<main id="content">
+			<div class="wrapper">
+				{$pm_notice}
+				{$remote_avatar_notice}
+				{$bannedwarning}
+				{$bbclosedwarning}
+				{$modnotice}
+				{$pending_joinrequests}
+				{$awaitingusers}
+				<navigation>]]></template>
+		<template name="posticons" version="1837"><![CDATA[<tr>
+<td class="trow1" style="vertical-align: top"><strong>{$lang->post_icon}</strong><span class="smalltext"><label class="posticons_label"><input type="radio" class="radio" name="icon" value="-1"{$no_icons_checked} />{$lang->no_post_icon}</label></span></td>
+<td class="trow1" valign="top">{$iconlist}</td>
+</tr>]]></template>
+		<template name="postbit_offline" version="1837"><![CDATA[<span title="{$lang->postbit_status_offline}" class="buddy_status offline" >❌</span>]]></template>
+		<template name="showthread_add_poll" version="1837"><![CDATA[<div><a href="polls.php?action=newpoll&amp;tid={$tid}">{$lang->add_poll_to_thread}</a></div>]]></template>
+		<template name="showthread_printthread" version="1837"><![CDATA[<div class="printable"><a href="printthread.php?tid={$tid}">{$lang->view_printable}</a></div>]]></template>
+		<template name="showthread_send_thread" version="1837"><![CDATA[<div class="sendthread"><a href="sendthread.php?tid={$tid}">{$lang->send_thread}</a></div>]]></template>
+		<template name="showthread_subscription" version="1837"><![CDATA[<div class="subscription_{$add_remove_subscription}"><a href="usercp.php?action={$add_remove_subscription}subscription&amp;tid={$tid}&amp;my_post_key={$mybb->post_code}">{$add_remove_subscription_text}</a></div>]]></template>
+		<template name="postbit" version="1837"><![CDATA[{$ignore_bit}{$deleted_bit}
+<a name="pid{$post['pid']}" id="pid{$post['pid']}"></a>
+<div class="post trans_border {$unapproved_shade}" style="{$post_visibility}" id="post_{$post['pid']}">
+<div class="post_author">
+	{$post['useravatar']}
+	<div class="author_information">
+			<strong><span class="largetext">{$post['profilelink']}</span></strong>{$post['onlinestatus']}<span class="stars"> {$post['userstars']}</span>
+			<div class="smalltext">
+				{$post['profilefield']}<br/>
+				{$post['usertitle']}
+				
+				{$post['groupimage']}
+			</div>
+	</div>
+	<div class="author_statistics">
+		{$post['user_details']}
+	</div>
+</div>
+<div class="post_content">
+	<div class="post_head">
+		{$post['posturl']}
+		{$post['icon']}
+		<span class="post_date">{$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
+		{$post['subject_extra']}
+	</div>
+	<div class="post_body scaleimages" id="pid_{$post['pid']}">
+		{$post['message']}
+	</div>
+	{$post['attachments']}
+	{$post['signature']}
+	<div class="post_meta" id="post_meta_{$post['pid']}">
+		{$post['iplogged']}
+		<div class="float_right">
+			{$post['poststatus']}
+		</div>
+	</div>
+	{$post['input_editreason']}
+</div>
+<div class="post_controls">
+	
+				
+				<input id="show-postaction{$post['pid']}" class="toggle" name="show-postaction{$post['pid']}" type="checkbox" style="display:none" value="false"/>
+				<button><label for="show-postaction{$post['pid']}">Aktion</label></button>
+				
+				<div class="toggleable">
+	<div class="postbit_buttons author_buttons float_left">
+		{$post['button_email']}{$post['button_pm']}{$post['button_www']}{$post['button_find']}{$post['button_rep']}
+	</div>
+	<div class="postbit_buttons post_management_buttons float_right">
+		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
+	</div>
+	</div>
+</div>
+	<div class="clear"></div>
+</div>]]></template>
+		<template name="forumdisplay_threadlist_prefixes" version="1837"><![CDATA[<select name="prefix">
+<option value="-2"{$default_selected['any']}>{$lang->prefix_any}</option>
+<option value="-1"{$default_selected['none']}>{$lang->prefix_none}</option>
+<option value="0"{$default_selected['all']}>{$lang->prefix_all}</option>
+{$prefixselect_prefix}
+</select>]]></template>
+		<template name="htmldoctype" version="1837"><![CDATA[<!DOCTYPE html>]]></template>
+		<template name="forumdisplay_thread_attachment_count" version="1837"><![CDATA[<div class="float_right"><img src="{$theme['imgdir']}/paperclip.png" alt="" title="{$attachment_count}" /></div>]]></template>
+		<template name="forumdisplay_thread_icon" version="1837"><![CDATA[<img src="{$icon['path']}" alt="{$icon['name']}" title="{$icon['name']}" />]]></template>
+		<template name="posticons_icon" version="1837"><![CDATA[<label class="posticons_label"><input type="radio" name="icon" value="{$dbicon['iid']}"{$checked} /> <img src="{$dbicon['path']}" alt="{$dbicon['name']}" title="{$dbicon['name']}" /></label>]]></template>
+		<template name="forumdisplay_thread" version="1837"><![CDATA[<div class="display_thread inline_row clear">
+	<div>
+		<div class="float_right">
+			{$modbit}</div>
+		<span class="clear">{$prefix}</span>
+		<span>{$thread['threadprefix']}</span>
+		<span class="thread_icon">{$icon}</span>
+		<span><a href="{$thread['threadlink']}">{$thread['subject']}</a>{$thread['multipage']}</span>
+		<span class="thread_status {$folder}" title="{$folder_label}"></span>
+		<span class="unreadpost">{$gotounread}</span>
+		<div>{$attachment_count}</div>
+		<div class="creation smalltext">{$thread['profilelink']}{$lang->comma} {$thread['start_datetime']}</div>
+		<div class="thread_rating smalltext">{$rating}</div>
+	</div>
+	<div class="smallinfo">
+		{$lang->forumbit_posts}: {$thread['replies']}{$unapproved_posts}
+		{$lang->views}: {$thread['views']}
+		<span class="lastpost"><a href="{$thread['lastpostlink']}">{$lang->lastpost}</a> {$lang->by} {$lastposterlink} {$lastpostdate}</span>
+	</div>
+</div>]]></template>
+		<template name="forumdisplay_threadlist" version="1837"><![CDATA[<div class="float_left">
+	{$multipage}
+</div>
+<div class="float_right">
+	{$newthread}
+</div>
+<div class="clear">
+	<span class="smalltext"><strong><a href="misc.php?action=markread&amp;fid={$fid}{$post_code_string}">{$lang->markforum_read}</a>{$addremovesubscription}{$clearstoredpass}</strong></span>
+</div>
+<div class="forum_name">
+	<strong>{$foruminfo['name']}</strong>
+</div>
+	{$selectall}
+	{$announcementlist}
+<div class="display_threads">
+	{$threads}
+</div>
+	{$forumsort}
+
+<div><span class="smalltext"><strong><a href="{$sorturl}&amp;sortby=subject&amp;order=asc">{$lang->thread}</a> {$orderarrow['subject']} / <a href="{$sorturl}&amp;sortby=starter&amp;order=asc">{$lang->author}</a> {$orderarrow['starter']}</strong></span>
+		<span class="smalltext"><strong><a href="{$sorturl}&amp;sortby=replies&amp;order=desc">{$lang->replies}</a> {$orderarrow['replies']}</strong></span>
+		<strong><a href="{$sorturl}&amp;sortby=views&amp;order=desc">{$lang->views}</a> {$orderarrow['views']}</strong></span>
+		{$ratingcol}
+		<strong><a href="{$sorturl}&amp;sortby=lastpost&amp;order=desc">{$lang->lastpost}</a> {$orderarrow['lastpost']}</strong></span>
+		{$inlinemodcol}
+</div>
+<div class="float_left">
+	{$multipage}
+</div>
+<div class="float_right" >
+	{$newthread}
+</div>
+<br class="clear" />
+<br />
+<div class="legends">
+	<div>
+		<dl class="thread_legend smalltext">
+			<dd><span class="thread_status newfolder" title="{$lang->new_thread}">&nbsp;</span> {$lang->new_thread}</dd>
+			<dd><span class="thread_status folder" title="{$lang->no_new_thread}">&nbsp;</span> {$lang->no_new_thread}</dd>
+			<dd><span class="thread_status newhotfolder" title="{$lang->new_hot_thread}">&nbsp;</span> {$lang->new_hot_thread}</dd>
+			<dd><span class="thread_status hotfolder" title="{$lang->hot_thread}">&nbsp;</span> {$lang->hot_thread}</dd>
+			<dd><span class="thread_status dot_folder" title="{$lang->posts_by_you}">&nbsp;</span> {$lang->posts_by_you}</dd>
+			<dd><span class="thread_status closefolder" title="{$lang->closed_thread}">&nbsp;</span> {$lang->closed_thread}</dd>
+		</dl>
+	</div>
+	<br class="clear" />
+</div>
+<div class="float_right" style="text-align: right;">
+	{$inlinemod}
+	{$searchforum}
+	{$forumjump}
+</div>
+<br class="clear" />
+{$inline_edit_js}]]></template>
+		<template name="forumdisplay_thread_gotounread" version="1837"><![CDATA[<a href="{$thread['newpostlink']}"><span  title="{$lang->goto_first_unread}" >-></a>]]></template>
+	</templates>
+</theme>
