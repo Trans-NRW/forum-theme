@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<theme name="test" version="1837">
+<theme name="TransNRW" version="1837">
 	<properties>
 		<templateset><![CDATA[2]]></templateset>
 		<editortheme><![CDATA[mybb.css]]></editortheme>
@@ -885,7 +885,6 @@
 		<template name="showthread_quickreply_options_signature" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="postoptions[signature]" value="1" {$postoptionschecked['signature']} />&nbsp;<strong>{$lang->signature}</strong></label>]]></template>
 		<template name="showthread_quickreply_options_stick" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="modoptions[stickthread]" value="1"{$stickch} />&nbsp;<strong>{$lang->stick_thread}</strong></label>]]></template>
 		<template name="showthread_quickreply_options_close" version="1837"><![CDATA[<label><input type="checkbox" class="checkbox" name="modoptions[closethread]" value="1"{$closelinkch} />&nbsp;<strong>{$lang->close_thread}</strong></label>]]></template>
-		<template name="postbit_online" version="1837"><![CDATA[<span class="buddy_status online" title="{$lang->postbit_status_online}" >🟢</span>]]></template>
 		<template name="showthread_quickreply" version="1837"><![CDATA[<div id="quickreply_spinner" class="showthread_spinner" style="display: none"><img src="{$theme['imgdir']}/spinner.gif" /></div>
 <br />
 {$moderation_notice}
@@ -976,10 +975,7 @@
 				{$pending_joinrequests}
 				{$awaitingusers}
 				<navigation>]]></template>
-		<template name="posticons" version="1837"><![CDATA[<tr>
-<td class="trow1" style="vertical-align: top"><strong>{$lang->post_icon}</strong><span class="smalltext"><label class="posticons_label"><input type="radio" class="radio" name="icon" value="-1"{$no_icons_checked} />{$lang->no_post_icon}</label></span></td>
-<td class="trow1" valign="top">{$iconlist}</td>
-</tr>]]></template>
+		<template name="posticons_icon" version="1837"><![CDATA[<label class="posticons_label"><input type="radio" name="icon" value="{$dbicon['iid']}"{$checked} /><span><img src="{$dbicon['path']}" alt="{$dbicon['name']}" title="{$dbicon['name']}" ></span></label>]]></template>
 		<template name="postbit_offline" version="1837"><![CDATA[<span title="{$lang->postbit_status_offline}" class="buddy_status offline" >❌</span>]]></template>
 		<template name="showthread_add_poll" version="1837"><![CDATA[<div><a href="polls.php?action=newpoll&amp;tid={$tid}">{$lang->add_poll_to_thread}</a></div>]]></template>
 		<template name="showthread_printthread" version="1837"><![CDATA[<div class="printable"><a href="printthread.php?tid={$tid}">{$lang->view_printable}</a></div>]]></template>
@@ -1040,6 +1036,16 @@
 </div>
 	<div class="clear"></div>
 </div>]]></template>
+		<template name="posticons" version="1837"><![CDATA[<div class="trans_border">
+	
+	<input id="show-icons" class="toggle" name="show-icons" type="checkbox" style="display:none" value="false"/>
+	<button type="button"><label for="show-icons">{$lang->post_icon}</label></button>
+		
+	<div class="toggleable icons">
+		<label class="posticons_label"><input type="radio" class="radio" name="icon" value="-1"{$no_icons_checked} /><span class="smalltext">{$lang->no_post_icon}</span></label>
+		{$iconlist}
+	</div>
+</div>]]></template>
 		<template name="forumdisplay_threadlist_prefixes" version="1837"><![CDATA[<select name="prefix">
 <option value="-2"{$default_selected['any']}>{$lang->prefix_any}</option>
 <option value="-1"{$default_selected['none']}>{$lang->prefix_none}</option>
@@ -1048,28 +1054,8 @@
 </select>]]></template>
 		<template name="htmldoctype" version="1837"><![CDATA[<!DOCTYPE html>]]></template>
 		<template name="forumdisplay_thread_attachment_count" version="1837"><![CDATA[<div class="float_right"><img src="{$theme['imgdir']}/paperclip.png" alt="" title="{$attachment_count}" /></div>]]></template>
+		<template name="postbit_online" version="1837"><![CDATA[<span class="buddy_status online" title="{$lang->postbit_status_online}" >⚪</span>]]></template>
 		<template name="forumdisplay_thread_icon" version="1837"><![CDATA[<img src="{$icon['path']}" alt="{$icon['name']}" title="{$icon['name']}" />]]></template>
-		<template name="posticons_icon" version="1837"><![CDATA[<label class="posticons_label"><input type="radio" name="icon" value="{$dbicon['iid']}"{$checked} /> <img src="{$dbicon['path']}" alt="{$dbicon['name']}" title="{$dbicon['name']}" /></label>]]></template>
-		<template name="forumdisplay_thread" version="1837"><![CDATA[<div class="display_thread inline_row clear">
-	<div>
-		<div class="float_right">
-			{$modbit}</div>
-		<span class="clear">{$prefix}</span>
-		<span>{$thread['threadprefix']}</span>
-		<span class="thread_icon">{$icon}</span>
-		<span><a href="{$thread['threadlink']}">{$thread['subject']}</a>{$thread['multipage']}</span>
-		<span class="thread_status {$folder}" title="{$folder_label}"></span>
-		<span class="unreadpost">{$gotounread}</span>
-		<div>{$attachment_count}</div>
-		<div class="creation smalltext">{$thread['profilelink']}{$lang->comma} {$thread['start_datetime']}</div>
-		<div class="thread_rating smalltext">{$rating}</div>
-	</div>
-	<div class="smallinfo">
-		{$lang->forumbit_posts}: {$thread['replies']}{$unapproved_posts}
-		{$lang->views}: {$thread['views']}
-		<span class="lastpost"><a href="{$thread['lastpostlink']}">{$lang->lastpost}</a> {$lang->by} {$lastposterlink} {$lastpostdate}</span>
-	</div>
-</div>]]></template>
 		<template name="forumdisplay_threadlist" version="1837"><![CDATA[<div class="float_left">
 	{$multipage}
 </div>
@@ -1124,6 +1110,247 @@
 </div>
 <br class="clear" />
 {$inline_edit_js}]]></template>
+		<template name="forumdisplay_thread" version="1837"><![CDATA[<div class="display_thread inline_row clear">
+	<div>
+		<div class="float_right">
+			{$modbit}</div>
+		<span class="clear">{$prefix}</span>
+		<span>{$thread['threadprefix']}</span>
+		<span class="thread_icon">{$icon}</span>
+		<span><a href="{$thread['threadlink']}">{$thread['subject']}</a>{$thread['multipage']}</span>
+		<span class="thread_status {$folder}" title="{$folder_label}"></span>
+		<span class="unreadpost">{$gotounread}</span>
+		<div>{$attachment_count}</div>
+		<div class="creation smalltext">{$thread['profilelink']}{$lang->comma} {$thread['start_datetime']}</div>
+		<div class="thread_rating smalltext">{$rating}</div>
+	</div>
+	<div class="smallinfo">
+		{$lang->forumbit_posts}: {$thread['replies']}{$unapproved_posts}
+		{$lang->views}: {$thread['views']}
+		<span class="lastpost"><a href="{$thread['lastpostlink']}">{$lang->lastpost}</a> {$lang->by} {$lastposterlink} {$lastpostdate}</span>
+	</div>
+</div>]]></template>
 		<template name="forumdisplay_thread_gotounread" version="1837"><![CDATA[<a href="{$thread['newpostlink']}"><span  title="{$lang->goto_first_unread}" >-></a>]]></template>
+		<template name="post_subscription_method" version="1837"><![CDATA[<div class="post_options">
+	<div><strong>{$lang->thread_subscription_method}</strong><br />
+		<span class="smalltext">{$lang->thread_subscription_method_desc}</span>
+	</div>
+	<div class="smalltext">
+		<label><input type="radio" name="postoptions[subscriptionmethod]" {$subscribe}value="" style="vertical-align: middle;" /> {$lang->no_subscribe}</label><br />
+		<label><input type="radio" name="postoptions[subscriptionmethod]" {$nonesubscribe}value="none" style="vertical-align: middle;" /> {$lang->no_subscribe_notification}</label><br />
+		<label><input type="radio" name="postoptions[subscriptionmethod]" {$emailsubscribe}value="email" style="vertical-align: middle;" /> {$lang->instant_email_subscribe}</label><br />
+		<label><input type="radio" name="postoptions[subscriptionmethod]" {$pmsubscribe}value="pm" style="vertical-align: middle;" /> {$lang->instant_pm_subscribe}</label><br />
+	</div>
+</div>]]></template>
+		<template name="codebuttons" version="1837"><![CDATA[<link rel="stylesheet" href="{$mybb->asset_url}/jscripts/sceditor/themes/{$theme['editortheme']}" type="text/css" media="all" />
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/sceditor/jquery.sceditor.bbcode.min.js?ver=1832"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/bbcodes_sceditor.js?ver=1837"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/sceditor/plugins/undo.js?ver=1832"></script>
+<script type="text/javascript">
+var partialmode = {$mybb->settings['partialmode']},
+opt_editor = {
+	plugins: "undo",
+	format: "bbcode",
+	bbcodeTrim: false,
+	style: "{$mybb->asset_url}/jscripts/sceditor/styles/jquery.sceditor.{$theme['editortheme']}?ver=1832",
+	rtl: {$lang->settings['rtl']},
+	locale: "mybblang",
+	width: "100%",
+	enablePasteFiltering: true,
+	autoUpdate: true,
+	emoticonsEnabled: {$emoticons_enabled},
+	emoticons: {
+		// Emoticons to be included in the dropdown
+		dropdown: {
+			{$dropdownsmilies}
+		},
+		// Emoticons to be included in the more section
+		more: {
+			{$moresmilies}
+		},
+		// Emoticons that are not shown in the dropdown but will still be converted. Can be used for things like aliases
+		hidden: {
+			{$hiddensmilies}
+		}
+	},
+	emoticonsCompat: true,
+	toolbar: "{$basic1}{$align}{$font}{$size}{$color}{$removeformat}{$basic2}image,{$email}{$link}|video{$emoticon}|{$list}{$code}quote|maximize,source",
+};
+{$editor_language}
+$(function() {
+	$("#{$bind}").sceditor(opt_editor);
+
+	MyBBEditor = $("#{$bind}").sceditor("instance");
+	{$sourcemode}
+});
+</script>]]></template>
+		<template name="newreply_modoptions" version="1837"><![CDATA[<div class="post_options">
+	<strong>{$lang->mod_options}</strong>
+	<div class="smalltext">
+		{$closeoption}
+		{$stickoption}
+	</div>
+</div>]]></template>
+		<template name="newreply_postoptions" version="1837"><![CDATA[<div class="post_options"><strong>{$lang->post_options}</strong>
+	<div class="smalltext">
+		{$signature}
+		{$disablesmilies}
+	</div>
+</div>]]></template>
+		<template name="newthread" version="1837"><![CDATA[<html>
+<head>
+<title>{$lang->newthread_in}</title>
+{$headerinclude}
+{$post_javascript}
+</head>
+<body>
+{$header}
+{$preview}
+{$thread_errors}
+{$attacherror}
+{$moderation_notice}
+<form action="newthread.php?fid={$fid}&amp;processed=1" method="post" enctype="multipart/form-data" name="input">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+	<div  class="post_form">
+		<div><strong>{$lang->post_new_thread}</strong></div>
+		<div>{$loginbox}</div>
+		<div class="subject">
+			<div><strong>{$lang->thread_subject}</strong></div>
+			<div>{$prefixselect}<input type="text" class="textbox" name="subject" size="40" maxlength="85" value="{$subject}" tabindex="1" /></div>
+		</div>
+		{$posticons}
+		<div class="message_container">
+			<textarea name="message" id="message" rows="20" cols="70" tabindex="2">{$message}</textarea>
+			{$codebuttons}
+			{$multiquote_external}
+		</div>
+		<div>
+		{$postoptions}
+		{$modoptions}
+		{$subscriptionmethod}
+		{$pollbox}
+		{$captcha}
+		</div>
+	</div>
+	{$attachbox}
+<br />
+<div style="text-align:center"><input type="submit" class="button" name="submit" value="{$lang->post_thread}" tabindex="4" accesskey="s" />  <input type="submit" class="button" name="previewpost" value="{$lang->preview_post}" tabindex="5" />{$savedraftbutton}</div>
+<input type="hidden" name="action" value="do_newthread" />
+<input type="hidden" name="posthash" value="{$posthash}" />
+<input type="hidden" name="attachmentaid" value="" />
+<input type="hidden" name="attachmentact" value="" />
+<input type="hidden" name="quoted_ids" value="{$quoted_ids}" />
+<input type="hidden" name="tid" value="{$tid}" />
+{$editdraftpid}
+</form>
+{$forumrules}
+{$footer}
+</body>
+</html>]]></template>
+		<template name="misc_smilies_popup_row" version="1837"><![CDATA[<tr>{$smile_icons}</tr>]]></template>
+		<template name="smilieinsert" version="1837"><![CDATA[<div style="margin:auto; width: 170px; margin-top: 20px;">
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder" width="150">
+<tr>
+<td class="thead"><span class="smalltext"><strong>{$lang->smilieinsert}</strong></span></td>
+</tr>
+<tr>
+<td class="trow1">
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="2" id="clickable_smilies">
+{$smilies}
+</table>
+</td>
+</tr>
+{$getmore}
+</table>
+</div>]]></template>
+		<template name="smilieinsert_getmore" version="1837"><![CDATA[<tr>
+  <td class="trow2" align="center"><span class="smalltext"><strong>[<a href="javascript:void(0)" onclick="MyBB.popupWindow('/misc.php?action=smilies&popup=true&editor=MyBBEditor&modal=1'); return false;">{$lang->smilieinsert_getmore}</a>]</strong></span></td>
+</tr>]]></template>
+		<template name="newreply" version="1837"><![CDATA[<html>
+<head>
+<title>{$lang->post_reply_to}</title>
+{$headerinclude}
+{$post_javascript}
+</head>
+<body>
+{$header}
+{$preview}
+{$maximageserror}
+{$attacherror}
+{$reply_errors}
+{$moderation_notice}
+<form action="newreply.php?tid={$tid}&amp;processed=1" method="post" enctype="multipart/form-data" name="input">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+	<div class="post_form">
+		<div class=""><strong>{$lang->post_new_reply}</strong></div>
+		<div class=""><span class="smalltext"><strong>{$lang->reply_to}</strong></span></div>
+		<div class="">{$loginbox}</div>
+		<div class="subject">
+			<strong>{$lang->post_subject}</strong><input type="text" class="textbox" name="subject" size="40" maxlength="85" value="{$subject}" tabindex="1" />
+		</div>
+			{$posticons}
+		<div class="message_container">
+			<strong>{$lang->your_message}</strong>
+<textarea id="message" name="message" rows="20" cols="70" tabindex="2" >{$message}</textarea>
+{$codebuttons}
+{$multiquote_external}
+		</div>
+		<div>
+			{$postoptions}
+			{$modoptions}
+			{$subscriptionmethod}
+			{$captcha}
+		</div>
+	</div>
+
+{$attachbox}
+<br />
+<div align="center"><input type="submit" class="button" name="submit" value="{$lang->post_reply}" tabindex="3" accesskey="s" />  <input type="submit" class="button" name="previewpost" value="{$lang->preview_post}" tabindex="4" />{$savedraftbutton}</div>
+<input type="hidden" name="action" value="do_newreply" />
+<input type="hidden" name="replyto" value="{$replyto}" />
+<input type="hidden" name="posthash" value="{$posthash}" />
+<input type="hidden" name="attachmentaid" value="" />
+<input type="hidden" name="attachmentact" value="" />
+<input type="hidden" name="quoted_ids" value="{$quoted_ids}" />
+<input type="hidden" name="tid" value="{$tid}" />
+{$editdraftpid}
+</form>
+{$forumrules}
+{$threadreview}
+{$footer}
+</body>
+</html>]]></template>
+		<template name="newreply_threadreview" version="1837"><![CDATA[<div>
+	<div><strong>{$lang->thread_review}</strong></div>
+	
+	<div>
+		{$reviewbits}
+		{$reviewmore}
+	</div>
+
+</div>]]></template>
+		<template name="previewpost" version="1837"><![CDATA[<div>
+	<div>
+		<td class="thead"><strong>{$lang->post_preview}</strong>
+	</div>
+	<div id="posts_container">
+		<div id="posts">
+			{$postbit}
+		</div>
+	</div>
+</div>]]></template>
+		<template name="newthread_postoptions" version="1837"><![CDATA[<div class="post_options">
+	<div><strong>{$lang->post_options}</strong></div>
+	<div><span class="smalltext">{$signature}{$disablesmilies}</span></div>
+</div>]]></template>
+		<template name="newthread_postpoll" version="1837"><![CDATA[<div class="post_options">
+	<div>
+		<strong>{$lang->poll}</strong><br /><span class="smalltext">{$lang->poll_desc}</span>
+	</div>
+	<div>
+		<span class="smalltext"><label><input type="checkbox" class="checkbox" name="postpoll" value="1" {$postpollchecked} /><strong>{$lang->poll_check}</strong></label><br />
+			{$lang->num_options} <input type="text" class="textbox" name="numpolloptions" value="{$numpolloptions}" size="10" /> {$lang->max_options}</span>
+	</div>
+</div>]]></template>
 	</templates>
 </theme>
